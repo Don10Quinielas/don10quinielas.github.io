@@ -1,6 +1,6 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 FINAL FIX</title><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 PREMIOS</title><style>
 body{background:#f1f5f9;margin:0;font-family:Arial;padding:8px}
-.header{background:#000;color:gold;border:2px solid gold;border-radius:14px;padding:12px;text-align:center;font-weight:900}
+.header{background:#000;color:gold;border:2px solid gold;border-radius:14px;padding:12px;text-align:center;font-weight:900;line-height:1.3}
 .card{background:#fff;border-radius:16px;padding:10px 8px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .team{width:32%;text-align:center}.team svg{width:46px;height:46px;display:block;margin:0 auto 4px}.team span{font-size:11px;font-weight:900;color:#111;display:block;line-height:1.1}
 .btn{width:38px;height:38px;border-radius:10px;border:2.5px solid;background:#fff;font-weight:900;font-size:15px}
@@ -11,7 +11,7 @@ input{width:100%;padding:12px;border:2px solid gold;border-radius:10px;backgroun
 .add{width:100%;padding:12px;background:#fff;border:1px dashed gold;border-radius:10px;margin-top:8px;font-weight:700}
 .send{width:100%;padding:15px;background:gold;border:none;border-radius:10px;font-weight:900;font-size:18px;margin-top:10px}
 </style></head><body>
-<div class="header">👑 DON 10 QUINIELAS J7 $10<br>SPIN 4217 4702 2005 5194 • BOTE 70/20/10</div>
+<div class="header">👑 DON 10 QUINIELAS J7 $10<br>💎 PERFECTA 9/9 = +$100 EXTRA<br>🤡 0/9 = $10 DE VUELTA<br>SPIN 4217 4702 2005 5194 • BOTE 70/20/10</div>
 <input id="nom" placeholder="Tu Nombre">
 <div id="lista"></div>
 <div id="total" class="total">Total: 1 = $10</div>
@@ -38,11 +38,7 @@ let h=document.createElement("div");h.style="color:#000;font-weight:900;margin:1
 for(let i=0;i<9;i++){
 let s=quin[q][i];
 let d=document.createElement("div");d.className="card";
-d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
-<div class="team">${data[i][0].logo}<span>${data[i][0].n}</span></div>
-<button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
-<div class="team">${data[i][1].logo}<span>${data[i][1].n}</span></div>
-<button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
+d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button><div class="team">${data[i][0].logo}<span>${data[i][0].n}</span></div><button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button><div class="team">${data[i][1].logo}<span>${data[i][1].n}</span></div><button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
 c.appendChild(d);
 }}
 document.getElementById("total").innerHTML="💰 Total: "+quin.length+" = $"+(quin.length*10);
@@ -52,15 +48,12 @@ function agregar(){let u=quin[quin.length-1];for(let k=0;k<9;k++)if(u[k]==""){al
 function enviar(){
 let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
 for(let q=0;q<quin.length;q++)for(let k=0;k<9;k++)if(quin[q][k]==""){alert("Falta P"+(k+1)+" Q"+(q+1));return;}
-let txt="DON 10 - J7\nNombre: "+n+"\nQuinielas: "+quin.length+" = $"+(quin.length*10)+"\nSPIN: 4217 4702 2005 5194\n\n";
+let txt="DON 10 J7 PREMIOS ESPECIALES\nNombre: "+n+"\nQuinielas: "+quin.length+" = $"+(quin.length*10)+"\nSPIN: 4217 4702 2005 5194\n\nPREMIOS:\n- Bote 70/20/10\n- Perfecta 9/9 = +$100 extra\n- 0 puntos 0/9 = $10 de vuelta\n\n";
 for(let q=0;q<quin.length;q++){
 txt+="Q"+(q+1)+":\n";
-for(let k=0;k<9;k++){
-txt+=(k+1)+". "+data[k][0].s+"-"+data[k][1].s+" = "+quin[q][k]+"\n";
-}
+for(let k=0;k<9;k++){txt+=(k+1)+". "+data[k][0].s+"-"+data[k][1].s+" = "+quin[q][k]+"\n";}
 txt+="\n";
 }
-txt+="Bote 70/20/10";
 let url="https://wa.me/5215630490385?text="+encodeURIComponent(txt);
 window.open(url,"_blank");
 }
