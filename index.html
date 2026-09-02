@@ -1,73 +1,28 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 ESCUDOS</title><style>
-body{background:#000;margin:0;font-family:Arial Black,Arial;padding:8px}
-.top{background:gold;border-radius:12px;padding:12px;text-align:center;font-weight:900;color:#000;font-size:16px}
-.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:10px 6px;margin:9px 0;box-shadow:0 2px 8px rgba(255,215,0,0.3)}
-.team{width:27%;text-align:center;font-size:9px;font-weight:900}
-.team img{width:50px;height:50px;object-fit:contain;display:block;margin:0 auto 3px}
-.btn{width:38px;height:38px;border-radius:10px;border:3px solid;font-weight:900;background:#fff;font-size:16px}
-.l{border-color:#7c3aed;color:#7c3aed}.e{border-color:#d97706;color:#d97706}.v{border-color:#059669;color:#059669}
-.btn.on.l{background:#7c3aed;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
-input,.total,.send,.add{width:100%;box-sizing:border-box;border-radius:10px}
-input{padding:12px;border:2px solid gold;background:#111;color:#fff;margin:8px 0}
-.total{background:gold;color:#000;text-align:center;padding:12px;font-weight:900;font-size:17px}
-.send{background:gold;border:none;padding:16px;font-weight:900;font-size:18px;margin-top:10px}
-.add{background:#111;color:#fff;border:1px dashed gold;padding:12px;margin-top:8px}
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7</title><style>
+body{background:#000;color:gold;font-family:Arial;padding:8px;margin:0}
+.box{border:2px solid gold;border-radius:15px;padding:12px;text-align:center;background:#111;font-weight:900}
+.card{background:#1a1a1a;border:1px solid gold;border-radius:12px;padding:12px;margin:8px 0}
+.r{display:flex;justify-content:space-between;align-items:center}
+.t{color:#fff;font-weight:bold;font-size:13px}
+button{padding:10px 16px;margin:2px;background:#000;color:gold;border:1px solid gold;border-radius:8px;font-weight:900}
+button.on{background:gold;color:#000}
+input{width:100%;padding:12px;background:#000;border:2px solid gold;color:#fff;border-radius:8px;box-sizing:border-box;margin:8px 0}
+.send{width:100%;padding:16px;background:gold;color:#000;font-weight:900;font-size:18px;border:none;border-radius:10px;margin-top:10px}
+.add{width:100%;padding:12px;background:#111;color:#fff;border:1px dashed gold;border-radius:10px}
+.tot{background:gold;color:#000;padding:11px;border-radius:8px;text-align:center;font-weight:900;font-size:18px;margin:10px 0}
 </style></head><body>
-<div class="top">👑 DON 10 QUINIELAS J7 - 9 PARTIDOS<br>💰 $10 • SPIN 4217 4702 2005 5194</div>
-<input id="nom" placeholder="Tu Nombre (Ej: Juan)">
+<div class="box">👑 DON 10 QUINIELAS - JORNADA 7<br>9 PARTIDOS • $10<br>SPIN: 4217 4702 2005 5194<br>BOTE 70 / 20 / 10</div>
+<input id="nom" placeholder="Tu Nombre">
 <div id="lista"></div>
-<div id="total" class="total">Total: 1 = $10</div>
-<button class="add" onclick="agregar()">➕ AGREGAR OTRA (+$10)</button>
-<button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button>
+<div id="total" class="tot">Total: 1 = $10</div>
+<button class="add" onclick="agregar()">➕ AGREGAR OTRA QUINIELA (+$10)</button>
+<button class="send" onclick="env()">ENVIAR A DON 10 📲</button>
 <script>
-const escudos={
-juarez:"https://i.imgur.com/8Km9tLL.png", pachuca:"https://i.imgur.com/3Z7hJ1L.png",
-newcastle:"https://i.imgur.com/Qh5G3fL.png", bournemouth:"https://i.imgur.com/8kR9h1L.png",
-fulham:"https://i.imgur.com/mX1q6Qp.png", crystal:"https://i.imgur.com/2y2x4qL.png",
-nottingham:"https://i.imgur.com/9Q1hJ1L.png", tottenham:"https://i.imgur.com/4t1pL9Q.png",
-athletic:"https://i.imgur.com/1a2b3c4.png", atletico:"https://i.imgur.com/5J6K7L8.png",
-sanluis:"https://i.imgur.com/7M8N9O0.png", guadalajara:"https://i.imgur.com/P1Q2R3S.png",
-tigres:"https://i.imgur.com/T1U2V3W.png", necaxa:"https://i.imgur.com/X4Y5Z6A.png",
-atlas:"https://i.imgur.com/B7C8D9E.png", atlante:"https://i.imgur.com/F0G1H2I.png",
-cruzazul:"https://i.imgur.com/J3K4L5M.png", santos:"https://i.imgur.com/N6O7P8Q.png"
-};
-
-// VERSION 100% LOCAL - USAMOS ICONOS QUE SI CARGAN DE CDN DE LIGA MX OFICIAL
-var data=[
-[{n:"JUAREZ",logo:"https://images.mlssoccer.com/image/private/t_q-best/prd-club/t3h2h2q1zzt7jzj8x1w2.png"},{n:"PACHUCA",logo:"https://images.mlssoccer.com/image/private/t_q-best/prd-club/pachuca.png"}],
-[{n:"NEWCASTLE",logo:"https://resources.premierleague.com/premierleague/badges/50/t43.png"},{n:"BOURNEMOUTH",logo:"https://resources.premierleague.com/premierleague/badges/50/t91.png"}],
-[{n:"FULHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t54.png"},{n:"CRYSTAL PALACE",logo:"https://resources.premierleague.com/premierleague/badges/50/t31.png"}],
-[{n:"NOTTINGHAM FOREST",logo:"https://resources.premierleague.com/premierleague/badges/50/t17.png"},{n:"TOTTENHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t6.png"}],
-[{n:"ATHLETIC CLUB",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F321.png&h=80"},{n:"ATLETICO MADRID",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1068.png&h=80"}],
-[{n:"ATLETICO SAN LUIS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12320.png&h=80"},{n:"GUADALAJARA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12325.png&h=80"}],
-[{n:"TIGRES",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12319.png&h=80"},{n:"NECAXA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1234.png&h=80"}],
-[{n:"ATLAS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1238.png&h=80"},{n:"ATLANTE FC",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1232.png&h=80"}],
-[{n:"CRUZ AZUL",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1237.png&h=80"},{n:"SANTOS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1233.png&h=80"}]
-];
-var quin=[Array(9).fill("")];
-function render(){
-let c=document.getElementById("lista");c.innerHTML="";
-for(let q=0;q<quin.length;q++){
-let h=document.createElement("div");h.style="color:gold;font-weight:bold;margin:8px 2px";h.innerHTML="⭐ QUINIELA #"+(q+1);c.appendChild(h);
-for(let i=0;i<9;i++){
-let s=quin[q][i];
-let d=document.createElement("div");d.className="card";
-d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
-<div class="team"><img src="${data[i][0].logo}" loading="eager">${data[i][0].n}</div>
-<button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
-<div class="team"><img src="${data[i][1].logo}" loading="eager">${data[i][1].n}</div>
-<button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
-c.appendChild(d);
-}}
-document.getElementById("total").innerHTML="💰 Total: "+quin.length+" = $"+(quin.length*10);
-}
-function pick(q,i,v){quin[q][i]=v;render();}
-function agregar(){let u=quin[quin.length-1];for(let k=0;k<9;k++)if(u[k]==""){alert("Llena Q#"+quin.length);return;}quin.push(Array(9).fill(""));render();}
-function enviar(){let n=document.getElementById("nom").value;if(!n){alert("Nombre");return;}
-for(let q=0;q<quin.length;q++)for(let k=0;k<9;k++)if(quin[q][k]==""){alert("Falta P"+(k+1)+" Q"+(q+1));return;}
-let t="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quin.length+" = $"+(quin.length*10)+"%0A";
-for(let q=0;q<quin.length;q++){t+="%0A*Q#"+(q+1)+":*%0A";for(let k=0;k<9;k++)t+=data[k][0].n+" vs "+data[k][1].n+" = "+quin[q][k]+"%0A";}
-t+="%0ASPIN 4217 4702 2005 5194 $"+(quin.length*10);
-window.open("https://wa.me/5215630490385?text="+t,"_blank");}
+var js=["JUAREZ vs PACHUCA","NEWCASTLE vs BOURNEMOUTH","FULHAM vs CRYSTAL PALACE","NOTTINGHAM FOREST vs TOTTENHAM","ATHLETIC CLUB vs ATLETICO MADRID","ATLETICO SAN LUIS vs GUADALAJARA","TIGRES vs NECAXA","ATLAS vs ATLANTE FC","CRUZ AZUL vs SANTOS"];
+var quinielas=[["","","","","","","","",""]];
+function render(){var c=document.getElementById("lista");c.innerHTML="";for(let q=0;q<quinielas.length;q++){var tit=document.createElement("div");tit.style="color:gold;font-weight:bold;margin-top:12px";tit.innerHTML="⭐ QUINIELA #"+(q+1);c.appendChild(tit);for(let i=0;i<js.length;i++){var d=document.createElement("div");d.className="card";var sel=quinielas[q][i];d.innerHTML='<div class="r"><span class="t">'+(i+1)+'. '+js[i]+'</span><div><button class="'+(sel=='L'?'on':'')+'" onclick="s('+q+','+i+',\'L\')">L</button><button class="'+(sel=='E'?'on':'')+'" onclick="s('+q+','+i+',\'E\')">E</button><button class="'+(sel=='V'?'on':'')+'" onclick="s('+q+','+i+',\'V\')">V</button></div></div>';c.appendChild(d);}}document.getElementById("total").innerHTML="💰 Total: "+quinielas.length+" = $"+(quinielas.length*10);}
+function s(q,i,v){quinielas[q][i]=v;render();}
+function agregar(){var u=quinielas[quinielas.length-1];for(let k=0;k<9;k++){if(u[k]==""){alert("Llena la #"+quinielas.length);return;}}quinielas.push(["","","","","","","","",""]);render();window.scrollTo(0,document.body.scrollHeight);}
+function env(){var n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return}for(let q=0;q<quinielas.length;q++)for(let k=0;k<9;k++)if(quinielas[q][k]==""){alert("Falta P"+(k+1)+" en Q#"+(q+1));return;}var t="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quinielas.length+" = $"+(quinielas.length*10)+"%0A";for(let q=0;q<quinielas.length;q++){t+="%0AQ#"+(q+1)+"%0A";for(let k=0;k<9;k++)t+=(k+1)+". "+js[k]+" = "+quinielas[q][k]+"%0A";}t+="%0ASPIN 4217 4702 2005 5194 $"+(quinielas.length*10);window.open("https://wa.me/5215630490385?text="+t,"_blank");}
 render();
 </script></body></html>
