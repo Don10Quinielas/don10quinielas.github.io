@@ -1,69 +1,60 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DON 10 J7</title>
-<style>
-body{background:#0a0a0a;margin:0;font-family:Arial;padding:8px}
-.header{background:linear-gradient(90deg,#d4af37,#ffd700,#b8860b);border-radius:16px;padding:14px;text-align:center;color:#000;font-weight:900;margin-bottom:12px;box-shadow:0 0 15px gold}
-.header small{font-size:14px;display:block;font-weight:700}
-.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;margin:8px 0;box-shadow:0 2px 6px rgba(0,0,0,0.3)}
-.team{width:32%;text-align:center;font-weight:800;font-size:11px;color:#111}
-.team img{width:42px;height:42px;object-fit:contain;display:block;margin:0 auto 3px}
-.btn{width:38px;height:38px;border-radius:10px;border:2.5px solid;font-weight:900;font-size:16px;background:#fff}
-.btn.l{border-color:#7c3aed;color:#7c3aed}.btn.e{border-color:#d97706;color:#d97706}.btn.v{border-color:#059669;color:#059669}
-.btn.on.l{background:#7c3aed;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
-input{width:100%;padding:13px;border-radius:10px;border:2px solid gold;background:#111;color:#fff;margin:10px 0;box-sizing:border-box}
-.total{background:gold;color:#000;text-align:center;padding:12px;border-radius:10px;font-weight:900;font-size:18px;margin:10px 0}
-.send{width:100%;padding:16px;background:gold;border:none;border-radius:12px;font-weight:900;font-size:18px}
-.add{width:100%;padding:12px;background:#111;color:#fff;border:1px dashed gold;border-radius:10px;margin-top:8px}
-</style>
-</head>
-<body>
-<div class="header">DON 10 QUINIELAS<br><small>JORNADA 7 • $10 • SPIN 4217 4702 2005 5194</small></div>
-<input id="nom" placeholder="Tu Nombre">
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 CON ESCUDOS</title><style>
+body{background:#0c0c0c;margin:0;font-family:Arial;padding:8px}
+.top{background:linear-gradient(90deg,#d4af37,gold,#b8860b);border-radius:14px;padding:12px;text-align:center;font-weight:900;color:#000}
+.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:8px;margin:8px 0}
+.team{width:28%;text-align:center;font-size:10px;font-weight:900;line-height:1.1}
+.team img{width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 2px}
+.btn{width:38px;height:38px;border-radius:9px;border:2.5px solid;font-weight:900;background:#fff}
+.l{border-color:#6d28d9;color:#6d28d9}.e{border-color:#d97706;color:#d97706}.v{border-color:#059669;color:#059669}
+.btn.on.l{background:#6d28d9;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
+input,.total,.send,.add{width:100%;box-sizing:border-box;border-radius:10px}
+input{padding:12px;border:2px solid gold;background:#111;color:#fff;margin:8px 0}
+.total{background:gold;color:#000;text-align:center;padding:11px;font-weight:900}
+.send{background:gold;border:none;padding:15px;font-weight:900;font-size:17px;margin-top:10px}
+.add{background:#111;color:#fff;border:1px dashed gold;padding:11px;margin-top:8px}
+</style></head><body>
+<div class="top">👑 DON 10 QUINIELAS - JORNADA 7<br>$10 • SPIN 4217 4702 2005 5194 • 4-6 SEP</div>
+<input id="nom" placeholder="Tu Nombre (Ej: Juan)">
 <div id="lista"></div>
-<div id="total" class="total">Total: 1 quiniela = $10</div>
-<button class="add" onclick="agregar()">➕ AGREGAR OTRA QUINIELA (+$10)</button>
+<div id="total" class="total">Total: 1 = $10</div>
+<button class="add" onclick="agregar()">➕ AGREGAR OTRA (+$10)</button>
 <button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button>
 <script>
-var partidos=[
-["JUAREZ","PACHUCA"],
-["NEWCASTLE","BOURNEMOUTH"],
-["FULHAM","CRYSTAL PALACE"],
-["NOTTINGHAM FOREST","TOTTENHAM"],
-["ATHLETIC CLUB","ATLETICO MADRID"],
-["ATLETICO SAN LUIS","GUADALAJARA"],
-["TIGRES","NECAXA"],
-["ATLAS","ATLANTE FC"],
-["CRUZ AZUL","SANTOS"]
+var data=[
+[{n:"JUAREZ",logo:"https://upload.wikimedia.org/wikipedia/en/9/9e/FC_Ju%C3%A1rez_badge.svg"},{n:"PACHUCA",logo:"https://upload.wikimedia.org/wikipedia/en/4/44/CF_Pachuca_logo.svg"}],
+[{n:"NEWCASTLE",logo:"https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg"},{n:"BOURNEMOUTH",logo:"https://upload.wikimedia.org/wikipedia/en/e/e5/AFC_Bournemouth_%282013%29.svg"}],
+[{n:"FULHAM",logo:"https://upload.wikimedia.org/wikipedia/en/e/eb/Fulham_FC_%28shield%29.svg"},{n:"CRYSTAL PALACE",logo:"https://upload.wikimedia.org/wikipedia/en/a/a2/Crystal_Palace_FC_logo_%282022%29.svg"}],
+[{n:"NOTTINGHAM FOREST",logo:"https://upload.wikimedia.org/wikipedia/en/e/e5/Nottingham_Forest_F.C._logo.svg"},{n:"TOTTENHAM",logo:"https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg"}],
+[{n:"ATHLETIC CLUB",logo:"https://upload.wikimedia.org/wikipedia/en/9/98/Club_Athletic_Bilbao_logo.svg"},{n:"ATLETICO MADRID",logo:"https://upload.wikimedia.org/wikipedia/en/f/f4/Atletico_Madrid_logo.svg"}],
+[{n:"ATLETICO SAN LUIS",logo:"https://upload.wikimedia.org/wikipedia/en/c/cc/Atletico_San_Luis_logo.svg"},{n:"GUADALAJARA",logo:"https://upload.wikimedia.org/wikipedia/commons/0/0f/Club_Deportivo_Guadalajara_logo.svg"}],
+[{n:"TIGRES",logo:"https://upload.wikimedia.org/wikipedia/commons/b/bb/Tigres_UANL_logo_%28crest%29.svg"},{n:"NECAXA",logo:"https://upload.wikimedia.org/wikipedia/commons/0/0d/Club_Necaxa_Logo.svg"}],
+[{n:"ATLAS",logo:"https://upload.wikimedia.org/wikipedia/en/c/c3/Atlas_logo.svg"},{n:"ATLANTE FC",logo:"https://upload.wikimedia.org/wikipedia/en/2/2a/Atlante_FC_logo.svg"}],
+[{n:"CRUZ AZUL",logo:"https://upload.wikimedia.org/wikipedia/commons/1/1e/Cruz_Azul_logo.svg"},{n:"SANTOS",logo:"https://upload.wikimedia.org/wikipedia/commons/7/7a/Santos_Laguna_logo.svg"}]
 ];
-var quinielas=[Array(9).fill("")];
+var quin=[Array(9).fill("")];
 function render(){
 let c=document.getElementById("lista");c.innerHTML="";
-for(let q=0;q<quinielas.length;q++){
-let t=document.createElement("div");t.style="color:gold;font-weight:bold;margin:10px 2px";t.innerHTML="QUINIELA #"+(q+1);c.appendChild(t);
+for(let q=0;q<quin.length;q++){
+let h=document.createElement("div");h.style="color:gold;font-weight:bold;margin:8px 2px";h.innerHTML="⭐ QUINIELA #"+(q+1);c.appendChild(h);
 for(let i=0;i<9;i++){
+let s=quin[q][i];
 let d=document.createElement("div");d.className="card";
-let sel=quinielas[q][i];
-d.innerHTML=`<button class="btn l ${sel=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
-<div class="team">${partidos[i][0]}</div>
-<button class="btn e ${sel=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
-<div class="team">${partidos[i][1]}</div>
-<button class="btn v ${sel=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
+d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
+<div class="team"><img src="${data[i][0].logo}">${data[i][0].n}</div>
+<button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
+<div class="team"><img src="${data[i][1].logo}">${data[i][1].n}</div>
+<button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
 c.appendChild(d);
 }}
-document.getElementById("total").innerHTML="Total: "+quinielas.length+" quiniela(s) = $"+(quinielas.length*10);
+document.getElementById("total").innerHTML="💰 Total: "+quin.length+" quiniela(s) = $"+(quin.length*10);
 }
-function pick(q,i,v){quinielas[q][i]=v;render();}
-function agregar(){let u=quinielas[quinielas.length-1];for(let k=0;k<9;k++)if(u[k]==""){alert("Llena la quiniela #"+quinielas.length);return;}quinielas.push(Array(9).fill(""));render();window.scrollTo(0,document.body.scrollHeight);}
-function enviar(){let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
-for(let q=0;q<quinielas.length;q++)for(let k=0;k<9;k++)if(quinielas[q][k]==""){alert("Falta partido "+(k+1)+" en Q#"+(q+1));return;}
-let txt="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quinielas.length+" = $"+(quinielas.length*10)+"%0A";
-for(let q=0;q<quinielas.length;q++){txt+="%0A*Q#"+(q+1)+":*%0A";for(let k=0;k<9;k++)txt+=partidos[k][0]+" vs "+partidos[k][1]+" = "+quinielas[q][k]+"%0A";}
-txt+="%0ASPIN 4217 4702 2005 5194";
-window.open("https://wa.me/5215630490385?text="+txt,"_blank");}
+function pick(q,i,v){quin[q][i]=v;render();}
+function agregar(){let u=quin[quin.length-1];for(let k=0;k<9;k++)if(u[k]==""){alert("Llena la Q#"+quin.length);return;}quin.push(Array(9).fill(""));render();window.scrollTo(0,document.body.scrollHeight);}
+function enviar(){let n=document.getElementById("nom").value;if(!n){alert("Nombre");return;}
+for(let q=0;q<quin.length;q++)for(let k=0;k<9;k++)if(quin[q][k]==""){alert("Falta partido "+(k+1)+" en Q"+(q+1));return;}
+let t="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quin.length+" = $"+(quin.length*10)+"%0A";
+for(let q=0;q<quin.length;q++){t+="%0A*Q#"+(q+1)+":*%0A";for(let k=0;k<9;k++)t+=data[k][0].n+" vs "+data[k][1].n+" = "+quin[q][k]+"%0A";}
+t+="%0ASPIN 4217 4702 2005 5194 $"+(quin.length*10);
+window.open("https://wa.me/5215630490385?text="+t,"_blank");}
 render();
-</script>
-</body>
-</html>
+</script></body></html>
