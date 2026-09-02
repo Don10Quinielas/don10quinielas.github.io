@@ -1,1 +1,69 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 - PRO</title><style>body{background:#000 url('https://www.transparenttextures.com/patterns/black-linen.png');color:gold;font-family:Arial;padding:10px;margin:0}.box{border:2px solid gold;border-radius:15px;padding:15px;text-align:center;background:linear-gradient(180deg,#1a1a1a,#000);box-shadow:0 0 20px gold}.card{background:#111;border:1px solid gold;border-radius:12px;padding:12px;margin:10px 0;box-shadow:0 0 5px rgba(255,215,0,0.3)}.r{display:flex;justify-content:space-between;align-items:center}.t{color:#fff;font-weight:bold;font-size:13px}button{padding:9px 15px;margin:2px;background:#000;color:gold;border:1px solid gold;border-radius:7px;font-weight:bold}button.on{background:gold;color:#000;box-shadow:0 0 10px gold}input{width:100%;padding:14px;background:#000;border:2px solid gold;color:#fff;border-radius:10px;box-sizing:border-box;margin:10px 0;font-size:16px}.send{width:100%;padding:18px;background:gold;color:#000;font-weight:bold;font-size:19px;border:none;border-radius:12px;margin-top:10px;box-shadow:0 0 15px gold}.add{width:100%;padding:13px;background:#111;color:#fff;border:1px dashed gold;border-radius:12px;margin-top:10px}.num{color:gold;font-size:16px;font-weight:bold;letter-spacing:1px;background:#1a1a1a;padding:5px 10px;border-radius:20px;display:inline-block;margin:5px 0}.tot{background:gold;color:#000;padding:12px;border-radius:10px;text-align:center;font-weight:bold;font-size:18px;margin:12px 0;box-shadow:0 0 10px gold}h2{margin:5px;text-shadow:0 0 10px gold}</style></head><body><div class="box"><h2>👑 DON 10 QUINIELAS 👑</h2>JORNADA 8 • $10 MXN c/u<br><span class="num">💳 SPIN OXXO: 4217 4702 2005 5194</span><br>🏆 BOTE 70/20/10 • 📲 5630490385</div><input id="nom" placeholder="✏️ Tu Nombre Completo"><div id="lista"></div><div id="total" class="tot">Total: 1 quiniela = $10</div><button class="add" onclick="agregar()">➕ AGREGAR OTRA QUINIELA (+$10)</button><button class="send" onclick="env()">ENVIAR TODAS A DON 10 📲</button><script>var js=["AMERICA vs CHIVAS","CRUZ AZUL vs TOLUCA","PUMAS vs TIGRES","MONTERREY vs LEON","SANTOS vs ATLAS","JUAREZ vs PACHUCA","NECAXA vs QUERETARO","TIJUANA vs MAZATLAN","PUEBLA vs SAN LUIS"];var quinielas=[["","","","","","","","",""]];var actual=0;function render(){var c=document.getElementById("lista");c.innerHTML="";for(let q=0;q<quinielas.length;q++){var tit=document.createElement("div");tit.style="color:gold;font-weight:bold;margin-top:18px;font-size:15px";tit.innerHTML="⭐ QUINIELA #"+(q+1)+(q==actual?" 👈 LLENANDO":" ✅");c.appendChild(tit);for(let i=0;i<9;i++){var d=document.createElement("div");d.className="card";var sel=quinielas[q][i];d.innerHTML='<div class="r"><span class="t">'+(i+1)+'. '+js[i]+'</span><div><button class="'+(sel=='L'?'on':'')+'" onclick="s('+q+','+i+',\'L\')">L</button><button class="'+(sel=='E'?'on':'')+'" onclick="s('+q+','+i+',\'E\')">E</button><button class="'+(sel=='V'?'on':'')+'" onclick="s('+q+','+i+',\'V\')">V</button></div></div>';c.appendChild(d);}}document.getElementById("total").innerHTML="💰 Total: "+quinielas.length+" quiniela(s) = $"+(quinielas.length*10);}function s(q,i,v){quinielas[q][i]=v;actual=q;render();}function agregar(){var ultima=quinielas[quinielas.length-1];for(let k=0;k<9;k++){if(ultima[k]==""){alert("Primero llena la quiniela #"+quinielas.length+" Don");return;}}quinielas.push(["","","","","","","","",""]);actual=quinielas.length-1;render();window.scrollTo(0,document.body.scrollHeight);}function env(){var n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre Don");return}for(let q=0;q<quinielas.length;q++){for(let k=0;k<9;k++){if(quinielas[q][k]==""){alert("Falta partido "+(k+1)+" en quiniela #"+(q+1));actual=q;render();return;}}}var t="Hola DON 10 %F0%9F%91%91%0ASoy "+n+"%0A%0A💰 Total: "+quinielas.length+" quinielas = $"+(quinielas.length*10)+"%0A%0A";for(let q=0;q<quinielas.length;q++){t+="*⭐ QUINIELA #"+(q+1)+"*%0A";for(let k=0;k<9;k++){t+=(k+1)+". "+js[k]+" = "+quinielas[q][k]+"%0A"}t+="%0A";}t+="💳 Pago SPIN: 4217 4702 2005 5194%0A💵 Total transferido: $"+(quinielas.length*10);window.open("https://wa.me/5215630490385?text="+t,"_blank");}render();</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DON 10 J7</title>
+<style>
+body{background:#0a0a0a;margin:0;font-family:Arial;padding:8px}
+.header{background:linear-gradient(90deg,#d4af37,#ffd700,#b8860b);border-radius:16px;padding:14px;text-align:center;color:#000;font-weight:900;margin-bottom:12px;box-shadow:0 0 15px gold}
+.header small{font-size:14px;display:block;font-weight:700}
+.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:8px 10px;margin:8px 0;box-shadow:0 2px 6px rgba(0,0,0,0.3)}
+.team{width:32%;text-align:center;font-weight:800;font-size:11px;color:#111}
+.team img{width:42px;height:42px;object-fit:contain;display:block;margin:0 auto 3px}
+.btn{width:38px;height:38px;border-radius:10px;border:2.5px solid;font-weight:900;font-size:16px;background:#fff}
+.btn.l{border-color:#7c3aed;color:#7c3aed}.btn.e{border-color:#d97706;color:#d97706}.btn.v{border-color:#059669;color:#059669}
+.btn.on.l{background:#7c3aed;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
+input{width:100%;padding:13px;border-radius:10px;border:2px solid gold;background:#111;color:#fff;margin:10px 0;box-sizing:border-box}
+.total{background:gold;color:#000;text-align:center;padding:12px;border-radius:10px;font-weight:900;font-size:18px;margin:10px 0}
+.send{width:100%;padding:16px;background:gold;border:none;border-radius:12px;font-weight:900;font-size:18px}
+.add{width:100%;padding:12px;background:#111;color:#fff;border:1px dashed gold;border-radius:10px;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">DON 10 QUINIELAS<br><small>JORNADA 7 • $10 • SPIN 4217 4702 2005 5194</small></div>
+<input id="nom" placeholder="Tu Nombre">
+<div id="lista"></div>
+<div id="total" class="total">Total: 1 quiniela = $10</div>
+<button class="add" onclick="agregar()">➕ AGREGAR OTRA QUINIELA (+$10)</button>
+<button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button>
+<script>
+var partidos=[
+["JUAREZ","PACHUCA"],
+["NEWCASTLE","BOURNEMOUTH"],
+["FULHAM","CRYSTAL PALACE"],
+["NOTTINGHAM FOREST","TOTTENHAM"],
+["ATHLETIC CLUB","ATLETICO MADRID"],
+["ATLETICO SAN LUIS","GUADALAJARA"],
+["TIGRES","NECAXA"],
+["ATLAS","ATLANTE FC"],
+["CRUZ AZUL","SANTOS"]
+];
+var quinielas=[Array(9).fill("")];
+function render(){
+let c=document.getElementById("lista");c.innerHTML="";
+for(let q=0;q<quinielas.length;q++){
+let t=document.createElement("div");t.style="color:gold;font-weight:bold;margin:10px 2px";t.innerHTML="QUINIELA #"+(q+1);c.appendChild(t);
+for(let i=0;i<9;i++){
+let d=document.createElement("div");d.className="card";
+let sel=quinielas[q][i];
+d.innerHTML=`<button class="btn l ${sel=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
+<div class="team">${partidos[i][0]}</div>
+<button class="btn e ${sel=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
+<div class="team">${partidos[i][1]}</div>
+<button class="btn v ${sel=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
+c.appendChild(d);
+}}
+document.getElementById("total").innerHTML="Total: "+quinielas.length+" quiniela(s) = $"+(quinielas.length*10);
+}
+function pick(q,i,v){quinielas[q][i]=v;render();}
+function agregar(){let u=quinielas[quinielas.length-1];for(let k=0;k<9;k++)if(u[k]==""){alert("Llena la quiniela #"+quinielas.length);return;}quinielas.push(Array(9).fill(""));render();window.scrollTo(0,document.body.scrollHeight);}
+function enviar(){let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
+for(let q=0;q<quinielas.length;q++)for(let k=0;k<9;k++)if(quinielas[q][k]==""){alert("Falta partido "+(k+1)+" en Q#"+(q+1));return;}
+let txt="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quinielas.length+" = $"+(quinielas.length*10)+"%0A";
+for(let q=0;q<quinielas.length;q++){txt+="%0A*Q#"+(q+1)+":*%0A";for(let k=0;k<9;k++)txt+=partidos[k][0]+" vs "+partidos[k][1]+" = "+quinielas[q][k]+"%0A";}
+txt+="%0ASPIN 4217 4702 2005 5194";
+window.open("https://wa.me/5215630490385?text="+txt,"_blank");}
+render();
+</script>
+</body>
+</html>
