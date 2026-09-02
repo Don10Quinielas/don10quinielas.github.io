@@ -1,9 +1,9 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7</title><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 FINAL</title><style>
 body{background:#f1f5f9;margin:0;font-family:Arial;padding:8px}
 .header{background:#000;color:gold;border:2px solid gold;border-radius:14px;padding:12px;text-align:center;font-weight:900}
 .card{background:#fff;border-radius:16px;padding:10px 8px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.08)}
 .team{width:32%;text-align:center}
-.team img{width:44px;height:44px;object-fit:contain;display:block;margin:0 auto 4px}
+.team svg{width:46px;height:46px;display:block;margin:0 auto 4px}
 .team span{font-size:11px;font-weight:900;color:#111;display:block;line-height:1.1}
 .btn{width:38px;height:38px;border-radius:10px;border:2.5px solid;background:#fff;font-weight:900;font-size:15px}
 .btn.l{border-color:#7c3aed;color:#7c3aed}.btn.e{border-color:#d97706;color:#d97706}.btn.v{border-color:#059669;color:#059669}
@@ -20,16 +20,17 @@ input{width:100%;padding:12px;border:2px solid gold;border-radius:10px;backgroun
 <button class="add" onclick="agregar()">➕ AGREGAR OTRA (+$10)</button>
 <button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button>
 <script>
+function esc(c1,c2,letra){return `<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='${c1}'/><stop offset='100%' stop-color='${c2}'/></linearGradient></defs><path d='M50 5 L90 20 L90 55 Q90 80 50 95 Q10 80 10 55 L10 20 Z' fill='url(#g)' stroke='#000' stroke-width='2'/><text x='50' y='62' font-size='28' font-weight='900' fill='white' text-anchor='middle' font-family='Arial' stroke='black' stroke-width='0.8'>${letra}</text></svg>`}
 var data=[
-[{n:"JUÁREZ",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12321.png&w=100&h=100"},{n:"PACHUCA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1230.png&w=100&h=100"}],
-[{n:"NEWCASTLE",logo:"https://resources.premierleague.com/premierleague/badges/50/t43.png"},{n:"BOURNEMOUTH",logo:"https://resources.premierleague.com/premierleague/badges/50/t91.png"}],
-[{n:"FULHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t54.png"},{n:"CRYSTAL PALACE",logo:"https://resources.premierleague.com/premierleague/badges/50/t31.png"}],
-[{n:"NOTTINGHAM FOREST",logo:"https://resources.premierleague.com/premierleague/badges/50/t17.png"},{n:"TOTTENHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t6.png"}],
-[{n:"ATHLETIC CLUB",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F321.png&w=100&h=100"},{n:"ATLETICO MADRID",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1068.png&w=100&h=100"}],
-[{n:"ATLÉTICO SAN LUIS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12320.png&w=100&h=100"},{n:"GUADALAJARA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12325.png&w=100&h=100"}],
-[{n:"TIGRES",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12319.png&w=100&h=100"},{n:"NECAXA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1234.png&w=100&h=100"}],
-[{n:"ATLAS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1238.png&w=100&h=100"},{n:"ATLANTE FC",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1232.png&w=100&h=100"}],
-[{n:"CRUZ AZUL",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1237.png&w=100&h=100"},{n:"SANTOS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1233.png&w=100&h=100"}]
+[{n:"JUÁREZ",logo:esc('#0d7a3a','#000','J')},{n:"PACHUCA",logo:esc('#0022ff','#fff','P')}],
+[{n:"NEWCASTLE",logo:esc('#000','#fff','N')},{n:"BOURNEMOUTH",logo:esc('#d71920','#000','B')}],
+[{n:"FULHAM",logo:esc('#000','#fff','F')},{n:"CRYSTAL PALACE",logo:esc('#0047ab','#d71920','CP')}],
+[{n:"NOTTINGHAM FOREST",logo:esc('#e30613','#fff','NF')},{n:"TOTTENHAM",logo:esc('#132257','#fff','T')}],
+[{n:"ATHLETIC CLUB",logo:esc('#ee2523','#fff','AC')},{n:"ATLETICO MADRID",logo:esc('#e30613','#0a3d8f','AM')}],
+[{n:"ATLÉTICO SAN LUIS",logo:esc('#e30613','#fff','ASL')},{n:"GUADALAJARA",logo:esc('#0d3b8c','#fff','G')}],
+[{n:"TIGRES",logo:esc('#ffbe00','#0a3d8f','T')},{n:"NECAXA",logo:esc('#e30613','#fff','N')}],
+[{n:"ATLAS",logo:esc('#e30613','#000','A')},{n:"ATLANTE FC",logo:esc('#0a3d8f','#e30613','AT')}],
+[{n:"CRUZ AZUL",logo:esc('#0047ab','#fff','CA')},{n:"SANTOS",logo:esc('#006341','#fff','S')}]
 ];
 var quin=[Array(9).fill("")];
 function render(){
@@ -40,9 +41,9 @@ for(let i=0;i<9;i++){
 let s=quin[q][i];
 let d=document.createElement("div");d.className="card";
 d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
-<div class="team"><img src="${data[i][0].logo}"><span>${data[i][0].n}</span></div>
+<div class="team">${data[i][0].logo}<span>${data[i][0].n}</span></div>
 <button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
-<div class="team"><img src="${data[i][1].logo}"><span>${data[i][1].n}</span></div>
+<div class="team">${data[i][1].logo}<span>${data[i][1].n}</span></div>
 <button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
 c.appendChild(d);
 }}
