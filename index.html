@@ -1,1 +1,38 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 QUINIELAS</title><style>body{background:#050505;color:#d4af37;font-family:Arial;margin:0;padding:10px} .head{text-align:center;border:2px solid gold;padding:14px;border-radius:12px;background:#111} .card{background:#151515;border:1px solid gold;border-radius:10px;padding:10px;margin:10px 0;display:flex;justify-content:space-between;align-items:center} .teams{color:#fff;font-size:13px;font-weight:bold} button{margin:2px;padding:9px 14px;background:#000;color:gold;border:1px solid gold;border-radius:6px;font-weight:bold} button.on{background:gold;color:#000} input{width:100%;padding:12px;background:#000;border:1px solid gold;color:#fff;border-radius:7px;margin:8px 0;box-sizing:border-box} .send{width:100%;padding:16px;background:gold;color:#000;font-weight:bold;font-size:18px;border:none;border-radius:10px;margin-top:12px}</style></head><body><div class="head"><h1 style="margin:0;color:gold">👑 DON 10 QUINIELAS</h1><p>JORNADA 8 • LIGA MX • $10 MXN<br>SPIN OXXO: 5194 • BOTE 70/20/10<br>WhatsApp: 5630490385</p></div><input id="nom" placeholder="Tu Nombre Completo"><div id="lista"></div><button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button><script>const juegos=["AMERICA vs CHIVAS","CRUZ AZUL vs TOLUCA","PUMAS vs TIGRES","MONTERREY vs LEON","SANTOS vs ATLAS","JUAREZ vs PACHUCA
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DON 10</title>
+<style>
+body{background:#000;color:gold;font-family:Arial;padding:10px;margin:0}
+.box{border:2px solid gold;border-radius:12px;padding:12px;text-align:center;background:#111}
+.card{background:#1a1a1a;border:1px solid gold;border-radius:10px;padding:10px;margin:10px 0}
+.r{display:flex;justify-content:space-between;align-items:center}
+.t{color:#fff;font-weight:bold;font-size:14px}
+button{padding:8px 14px;margin:2px;background:#000;color:gold;border:1px solid gold;border-radius:6px;font-weight:bold}
+button.on{background:gold;color:#000}
+input{width:100%;padding:12px;background:#000;border:1px solid gold;color:#fff;border-radius:8px;box-sizing:border-box;margin:8px 0}
+.send{width:100%;padding:16px;background:gold;color:#000;font-weight:bold;font-size:18px;border:none;border-radius:10px}
+.num{color:gold;font-weight:bold;font-size:15px;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="box"><h2>👑 DON 10 QUINIELAS</h2>JORNADA 8 • $10 MXN<br><span class="num">SPIN OXXO: 4217 4702 2005 5194</span><br>BOTE 70/20/10 • WhatsApp 5630490385</div>
+<input id="nom" placeholder="Tu Nombre Completo">
+<div id="lista"></div>
+<button class="send" onclick="env()">ENVIAR A DON 10 📲</button>
+<script>
+var js=["AMERICA vs CHIVAS","CRUZ AZUL vs TOLUCA","PUMAS vs TIGRES","MONTERREY vs LEON","SANTOS vs ATLAS","JUAREZ vs PACHUCA","NECAXA vs QUERETARO","TIJUANA vs MAZATLAN","PUEBLA vs SAN LUIS"];
+var sel=["","","","","","","","",""];
+var c=document.getElementById("lista");
+for(let i=0;i<js.length;i++){
+var d=document.createElement("div");d.className="card";
+d.innerHTML='<div class="r"><span class="t">'+(i+1)+'. '+js[i]+'</span><div><button id="b'+i+'L" onclick="s('+i+',\'L\')">L</button><button id="b'+i+'E" onclick="s('+i+',\'E\')">E</button><button id="b'+i+'V" onclick="s('+i+',\'V\')">V</button></div></div>';
+c.appendChild(d);
+}
+function s(i,v){sel[i]=v;document.getElementById('b'+i+'L').className='';document.getElementById('b'+i+'E').className='';document.getElementById('b'+i+'V').className='';document.getElementById('b'+i+v).className='on';}
+function env(){var n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return}for(let k=0;k<9;k++){if(sel[k]==""){alert("Falta partido "+(k+1));return}}var t="Hola DON 10 %F0%9F%91%91%0ASoy "+n+"%0A%0A";for(let k=0;k<9;k++){t+=(k+1)+". "+js[k]+" = "+sel[k]+"%0A"}t+="%0APago SPIN 4217 4702 2005 5194";window.open("https://wa.me/5215630490385?text="+t,"_blank");}
+</script>
+</body>
+</html>
