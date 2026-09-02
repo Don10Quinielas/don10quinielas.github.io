@@ -2,9 +2,7 @@
 body{background:#f1f5f9;margin:0;font-family:Arial;padding:8px}
 .header{background:#000;color:gold;border:2px solid gold;border-radius:14px;padding:12px;text-align:center;font-weight:900}
 .card{background:#fff;border-radius:16px;padding:10px 8px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.08)}
-.team{width:32%;text-align:center}
-.team svg{width:46px;height:46px;display:block;margin:0 auto 4px}
-.team span{font-size:11px;font-weight:900;color:#111;display:block;line-height:1.1}
+.team{width:32%;text-align:center}.team svg{width:46px;height:46px;display:block;margin:0 auto 4px}.team span{font-size:11px;font-weight:900;color:#111;display:block;line-height:1.1}
 .btn{width:38px;height:38px;border-radius:10px;border:2.5px solid;background:#fff;font-weight:900;font-size:15px}
 .btn.l{border-color:#7c3aed;color:#7c3aed}.btn.e{border-color:#d97706;color:#d97706}.btn.v{border-color:#059669;color:#059669}
 .btn.on.l{background:#7c3aed;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
@@ -22,15 +20,15 @@ input{width:100%;padding:12px;border:2px solid gold;border-radius:10px;backgroun
 <script>
 function esc(c1,c2,letra){return `<svg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'><defs><linearGradient id='g' x1='0' y1='0' x2='0' y2='1'><stop offset='0%' stop-color='${c1}'/><stop offset='100%' stop-color='${c2}'/></linearGradient></defs><path d='M50 5 L90 20 L90 55 Q90 80 50 95 Q10 80 10 55 L10 20 Z' fill='url(#g)' stroke='#000' stroke-width='2'/><text x='50' y='62' font-size='28' font-weight='900' fill='white' text-anchor='middle' font-family='Arial' stroke='black' stroke-width='0.8'>${letra}</text></svg>`}
 var data=[
-[{n:"JUÁREZ",logo:esc('#0d7a3a','#000','J')},{n:"PACHUCA",logo:esc('#0022ff','#fff','P')}],
-[{n:"NEWCASTLE",logo:esc('#000','#fff','N')},{n:"BOURNEMOUTH",logo:esc('#d71920','#000','B')}],
-[{n:"FULHAM",logo:esc('#000','#fff','F')},{n:"CRYSTAL PALACE",logo:esc('#0047ab','#d71920','CP')}],
-[{n:"NOTTINGHAM FOREST",logo:esc('#e30613','#fff','NF')},{n:"TOTTENHAM",logo:esc('#132257','#fff','T')}],
-[{n:"ATHLETIC CLUB",logo:esc('#ee2523','#fff','AC')},{n:"ATLETICO MADRID",logo:esc('#e30613','#0a3d8f','AM')}],
-[{n:"ATLÉTICO SAN LUIS",logo:esc('#e30613','#fff','ASL')},{n:"GUADALAJARA",logo:esc('#0d3b8c','#fff','G')}],
-[{n:"TIGRES",logo:esc('#ffbe00','#0a3d8f','T')},{n:"NECAXA",logo:esc('#e30613','#fff','N')}],
-[{n:"ATLAS",logo:esc('#e30613','#000','A')},{n:"ATLANTE FC",logo:esc('#0a3d8f','#e30613','AT')}],
-[{n:"CRUZ AZUL",logo:esc('#0047ab','#fff','CA')},{n:"SANTOS",logo:esc('#006341','#fff','S')}]
+[{n:"JUÁREZ",s:"JUA",logo:esc('#0d7a3a','#000','J')},{n:"PACHUCA",s:"PAC",logo:esc('#0022ff','#fff','P')}],
+[{n:"NEWCASTLE",s:"NEW",logo:esc('#000','#fff','N')},{n:"BOURNEMOUTH",s:"BOU",logo:esc('#d71920','#000','B')}],
+[{n:"FULHAM",s:"FUL",logo:esc('#000','#fff','F')},{n:"CRYSTAL PALACE",s:"CRY",logo:esc('#0047ab','#d71920','CP')}],
+[{n:"NOTTINGHAM",s:"NOT",logo:esc('#e30613','#fff','NF')},{n:"TOTTENHAM",s:"TOT",logo:esc('#132257','#fff','T')}],
+[{n:"ATHLETIC CLUB",s:"ATH",logo:esc('#ee2523','#fff','AC')},{n:"ATLETICO MADRID",s:"ATM",logo:esc('#e30613','#0a3d8f','AM')}],
+[{n:"ATL SAN LUIS",s:"ASL",logo:esc('#e30613','#fff','ASL')},{n:"GUADALAJARA",s:"GDL",logo:esc('#0d3b8c','#fff','G')}],
+[{n:"TIGRES",s:"TIG",logo:esc('#ffbe00','#0a3d8f','T')},{n:"NECAXA",s:"NEC",logo:esc('#e30613','#fff','N')}],
+[{n:"ATLAS",s:"ATS",logo:esc('#e30613','#000','A')},{n:"ATLANTE FC",s:"ATL",logo:esc('#0a3d8f','#e30613','AT')}],
+[{n:"CRUZ AZUL",s:"CAZ",logo:esc('#0047ab','#fff','CA')},{n:"SANTOS",s:"SAN",logo:esc('#006341','#fff','S')}]
 ];
 var quin=[Array(9).fill("")];
 function render(){
@@ -51,11 +49,21 @@ document.getElementById("total").innerHTML="💰 Total: "+quin.length+" = $"+(qu
 }
 function pick(q,i,v){quin[q][i]=v;render();}
 function agregar(){let u=quin[quin.length-1];for(let k=0;k<9;k++)if(u[k]==""){alert("Llena Q#"+quin.length);return;}quin.push(Array(9).fill(""));render();}
-function enviar(){let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
+function enviar(){
+let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
 for(let q=0;q<quin.length;q++)for(let k=0;k<9;k++)if(quin[q][k]==""){alert("Falta P"+(k+1)+" Q"+(q+1));return;}
-let t="Hola DON 10 J7 Soy "+n+"%0ATotal: "+quin.length+" = $"+(quin.length*10)+"%0A";
-for(let q=0;q<quin.length;q++){t+="%0A*Q#"+(q+1)+":*%0A";for(let k=0;k<9;k++)t+=data[k][0].n+" vs "+data[k][1].n+" = "+quin[q][k]+"%0A";}
-t+="%0ASPIN 4217 4702 2005 5194 $"+(quin.length*10);
-window.open("https://wa.me/5215630490385?text="+t,"_blank");}
+let t=`👑 *DON 10 - J7*%0A👤 *Nombre:* ${n}%0A🎫 *Quinielas:* ${quin.length} = $${quin.length*10}%0A💳 *SPIN:* 4217 4702 2005 5194%0A%0A`;
+for(let q=0;q<quin.length;q++){
+t+=`*--- Q#${q+1} ---*%0A`;
+for(let k=0;k<9;k++){
+let res=quin[q][k];
+let emoji=res=='L'?'🏠':res=='E'?'🤝':'✈️';
+t+=`${k+1}. ${data[k][0].s}-${data[k][1].s} = ${res} ${emoji}%0A`;
+}
+t+=`%0A`;
+}
+t+=`Bote: 70/20/10`;
+window.open("https://wa.me/5215630490385?text="+t,"_blank");
+}
 render();
 </script></body></html>
