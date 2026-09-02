@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 FINAL</title><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 FINAL FIX</title><style>
 body{background:#f1f5f9;margin:0;font-family:Arial;padding:8px}
 .header{background:#000;color:gold;border:2px solid gold;border-radius:14px;padding:12px;text-align:center;font-weight:900}
 .card{background:#fff;border-radius:16px;padding:10px 8px;margin:10px 0;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 6px rgba(0,0,0,.08)}
@@ -52,18 +52,17 @@ function agregar(){let u=quin[quin.length-1];for(let k=0;k<9;k++)if(u[k]==""){al
 function enviar(){
 let n=document.getElementById("nom").value;if(!n){alert("Pon tu nombre");return;}
 for(let q=0;q<quin.length;q++)for(let k=0;k<9;k++)if(quin[q][k]==""){alert("Falta P"+(k+1)+" Q"+(q+1));return;}
-let t=`👑 *DON 10 - J7*%0A👤 *Nombre:* ${n}%0A🎫 *Quinielas:* ${quin.length} = $${quin.length*10}%0A💳 *SPIN:* 4217 4702 2005 5194%0A%0A`;
+let txt="DON 10 - J7\nNombre: "+n+"\nQuinielas: "+quin.length+" = $"+(quin.length*10)+"\nSPIN: 4217 4702 2005 5194\n\n";
 for(let q=0;q<quin.length;q++){
-t+=`*--- Q#${q+1} ---*%0A`;
+txt+="Q"+(q+1)+":\n";
 for(let k=0;k<9;k++){
-let res=quin[q][k];
-let emoji=res=='L'?'🏠':res=='E'?'🤝':'✈️';
-t+=`${k+1}. ${data[k][0].s}-${data[k][1].s} = ${res} ${emoji}%0A`;
+txt+=(k+1)+". "+data[k][0].s+"-"+data[k][1].s+" = "+quin[q][k]+"\n";
 }
-t+=`%0A`;
+txt+="\n";
 }
-t+=`Bote: 70/20/10`;
-window.open("https://wa.me/5215630490385?text="+t,"_blank");
+txt+="Bote 70/20/10";
+let url="https://wa.me/5215630490385?text="+encodeURIComponent(txt);
+window.open(url,"_blank");
 }
 render();
 </script></body></html>
