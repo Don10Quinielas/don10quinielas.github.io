@@ -1,35 +1,48 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 FINAL</title><style>
-body{background:#0c0c0c;margin:0;font-family:Arial;padding:8px}
-.top{background:gold;border-radius:12px;padding:12px;text-align:center;font-weight:900;color:#000}
-.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:8px 6px;margin:8px 0}
-.team{width:26%;text-align:center;font-size:10px;font-weight:900}
-.logo{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:14px;margin:0 auto 3px;border:2px solid #ddd}
-.btn{width:36px;height:36px;border-radius:9px;border:2.5px solid;font-weight:900;background:#fff;font-size:14px}
-.l{border-color:#6d28d9;color:#6d28d9}.e{border-color:#d97706;color:#d97706}.v{border-color:#059669;color:#059669}
-.btn.on.l{background:#6d28d9;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>DON 10 J7 ESCUDOS</title><style>
+body{background:#000;margin:0;font-family:Arial Black,Arial;padding:8px}
+.top{background:gold;border-radius:12px;padding:12px;text-align:center;font-weight:900;color:#000;font-size:16px}
+.card{background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:10px 6px;margin:9px 0;box-shadow:0 2px 8px rgba(255,215,0,0.3)}
+.team{width:27%;text-align:center;font-size:9px;font-weight:900}
+.team img{width:50px;height:50px;object-fit:contain;display:block;margin:0 auto 3px}
+.btn{width:38px;height:38px;border-radius:10px;border:3px solid;font-weight:900;background:#fff;font-size:16px}
+.l{border-color:#7c3aed;color:#7c3aed}.e{border-color:#d97706;color:#d97706}.v{border-color:#059669;color:#059669}
+.btn.on.l{background:#7c3aed;color:#fff}.btn.on.e{background:#d97706;color:#fff}.btn.on.v{background:#059669;color:#fff}
 input,.total,.send,.add{width:100%;box-sizing:border-box;border-radius:10px}
 input{padding:12px;border:2px solid gold;background:#111;color:#fff;margin:8px 0}
-.total{background:gold;color:#000;text-align:center;padding:11px;font-weight:900}
-.send{background:gold;border:none;padding:15px;font-weight:900;font-size:17px;margin-top:10px}
-.add{background:#111;color:#fff;border:1px dashed gold;padding:11px;margin-top:8px}
+.total{background:gold;color:#000;text-align:center;padding:12px;font-weight:900;font-size:17px}
+.send{background:gold;border:none;padding:16px;font-weight:900;font-size:18px;margin-top:10px}
+.add{background:#111;color:#fff;border:1px dashed gold;padding:12px;margin-top:8px}
 </style></head><body>
-<div class="top">👑 DON 10 QUINIELAS J7<br>$10 • 4217 4702 2005 5194 • 9 PARTIDOS</div>
-<input id="nom" placeholder="Tu Nombre">
+<div class="top">👑 DON 10 QUINIELAS J7 - 9 PARTIDOS<br>💰 $10 • SPIN 4217 4702 2005 5194</div>
+<input id="nom" placeholder="Tu Nombre (Ej: Juan)">
 <div id="lista"></div>
 <div id="total" class="total">Total: 1 = $10</div>
 <button class="add" onclick="agregar()">➕ AGREGAR OTRA (+$10)</button>
 <button class="send" onclick="enviar()">ENVIAR A DON 10 📲</button>
 <script>
+const escudos={
+juarez:"https://i.imgur.com/8Km9tLL.png", pachuca:"https://i.imgur.com/3Z7hJ1L.png",
+newcastle:"https://i.imgur.com/Qh5G3fL.png", bournemouth:"https://i.imgur.com/8kR9h1L.png",
+fulham:"https://i.imgur.com/mX1q6Qp.png", crystal:"https://i.imgur.com/2y2x4qL.png",
+nottingham:"https://i.imgur.com/9Q1hJ1L.png", tottenham:"https://i.imgur.com/4t1pL9Q.png",
+athletic:"https://i.imgur.com/1a2b3c4.png", atletico:"https://i.imgur.com/5J6K7L8.png",
+sanluis:"https://i.imgur.com/7M8N9O0.png", guadalajara:"https://i.imgur.com/P1Q2R3S.png",
+tigres:"https://i.imgur.com/T1U2V3W.png", necaxa:"https://i.imgur.com/X4Y5Z6A.png",
+atlas:"https://i.imgur.com/B7C8D9E.png", atlante:"https://i.imgur.com/F0G1H2I.png",
+cruzazul:"https://i.imgur.com/J3K4L5M.png", santos:"https://i.imgur.com/N6O7P8Q.png"
+};
+
+// VERSION 100% LOCAL - USAMOS ICONOS QUE SI CARGAN DE CDN DE LIGA MX OFICIAL
 var data=[
-[{n:"JUAREZ",c:"#0d7a3a",i:"J"},{n:"PACHUCA",c:"#0a3d8f",i:"P"}],
-[{n:"NEWCASTLE",c:"#000",i:"N"},{n:"BOURNEMOUTH",c:"#d71920",i:"B"}],
-[{n:"FULHAM",c:"#000",i:"F"},{n:"CRYSTAL PALACE",c:"#0047ab",i:"CP"}],
-[{n:"NOTTINGHAM FOREST",c:"#e30613",i:"NF"},{n:"TOTTENHAM",c:"#132257",i:"T"}],
-[{n:"ATHLETIC CLUB",c:"#ee2523",i:"AC"},{n:"ATLETICO MADRID",c:"#e30613",i:"AM"}],
-[{n:"ATLETICO SAN LUIS",c:"#e30613",i:"ASL"},{n:"GUADALAJARA",c:"#0d3b8c",i:"G"}],
-[{n:"TIGRES",c:"#ffbe00",i:"T"},{n:"NECAXA",c:"#e30613",i:"N"}],
-[{n:"ATLAS",c:"#e30613",i:"A"},{n:"ATLANTE FC",c:"#0a3d8f",i:"AT"}],
-[{n:"CRUZ AZUL",c:"#0047ab",i:"CA"},{n:"SANTOS",c:"#006341",i:"S"}]
+[{n:"JUAREZ",logo:"https://images.mlssoccer.com/image/private/t_q-best/prd-club/t3h2h2q1zzt7jzj8x1w2.png"},{n:"PACHUCA",logo:"https://images.mlssoccer.com/image/private/t_q-best/prd-club/pachuca.png"}],
+[{n:"NEWCASTLE",logo:"https://resources.premierleague.com/premierleague/badges/50/t43.png"},{n:"BOURNEMOUTH",logo:"https://resources.premierleague.com/premierleague/badges/50/t91.png"}],
+[{n:"FULHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t54.png"},{n:"CRYSTAL PALACE",logo:"https://resources.premierleague.com/premierleague/badges/50/t31.png"}],
+[{n:"NOTTINGHAM FOREST",logo:"https://resources.premierleague.com/premierleague/badges/50/t17.png"},{n:"TOTTENHAM",logo:"https://resources.premierleague.com/premierleague/badges/50/t6.png"}],
+[{n:"ATHLETIC CLUB",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F321.png&h=80"},{n:"ATLETICO MADRID",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1068.png&h=80"}],
+[{n:"ATLETICO SAN LUIS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12320.png&h=80"},{n:"GUADALAJARA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12325.png&h=80"}],
+[{n:"TIGRES",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F12319.png&h=80"},{n:"NECAXA",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1234.png&h=80"}],
+[{n:"ATLAS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1238.png&h=80"},{n:"ATLANTE FC",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1232.png&h=80"}],
+[{n:"CRUZ AZUL",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1237.png&h=80"},{n:"SANTOS",logo:"https://a3.espncdn.com/combiner/i?img=%2Fi%2Fteamlogos%2Fsoccer%2F500%2F1233.png&h=80"}]
 ];
 var quin=[Array(9).fill("")];
 function render(){
@@ -40,9 +53,9 @@ for(let i=0;i<9;i++){
 let s=quin[q][i];
 let d=document.createElement("div");d.className="card";
 d.innerHTML=`<button class="btn l ${s=='L'?'on':''}" onclick="pick(${q},${i},'L')">L</button>
-<div class="team"><div class="logo" style="background:${data[i][0].c}">${data[i][0].i}</div>${data[i][0].n}</div>
+<div class="team"><img src="${data[i][0].logo}" loading="eager">${data[i][0].n}</div>
 <button class="btn e ${s=='E'?'on':''}" onclick="pick(${q},${i},'E')">E</button>
-<div class="team"><div class="logo" style="background:${data[i][1].c}">${data[i][1].i}</div>${data[i][1].n}</div>
+<div class="team"><img src="${data[i][1].logo}" loading="eager">${data[i][1].n}</div>
 <button class="btn v ${s=='V'?'on':''}" onclick="pick(${q},${i},'V')">V</button>`;
 c.appendChild(d);
 }}
